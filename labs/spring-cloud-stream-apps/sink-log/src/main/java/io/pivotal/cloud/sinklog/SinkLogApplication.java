@@ -24,7 +24,7 @@ public class SinkLogApplication {
 
   @StreamListener(Sink.INPUT)
   public void sinkLog(String message){
-    log.info(props.getPrefix() + message + props.getPostfix());
+    log.info(props.getPrefix() + message + props.getSuffix());
   }
 
   public static void main(String[] args) {
