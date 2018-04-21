@@ -10,13 +10,13 @@
 .settings
 .springBeans
 .sts4-cache
-target/
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -25,5 +25,3 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-
-build/
