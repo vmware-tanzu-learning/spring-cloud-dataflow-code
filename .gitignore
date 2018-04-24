@@ -27,3 +27,4 @@ target/
 /.nb-gradle/
 
 build/
+.DS_Store
