@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+       http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <file:inbound-channel-adapter id="filesIn"
+                                  auto-create-directory="true"
+                                  prevent-duplicates="true"
+                                  directory="file:${HOME}/Desktop/input"  filename-regex=".*\.xml"
+                                  auto-startup="true">
+        <int:poller id="poller" fixed-delay="5000" />
+
+    </file:inbound-channel-adapter>
+
+    <file:file-to-bytes-transformer delete-files="true" input-channel="filesIn" output-channel="content" />
+
+
+    <bean id="orderDeserializer" class="io.pivotal.scdf.si.xmltojson.OrderDeserializer"/>
+    <int:payload-deserializing-transformer output-channel="order" input-channel="content" deserializer="orderDeserializer" />
+
+
+    <int:channel id="order">
+        <int:interceptors>
+            <int:wire-tap channel="order-log"/>
+        </int:interceptors>
+    </int:channel>
+
+    <int:logging-channel-adapter id="order-log" level="INFO" logger-name="ORDER" expression="'Original Order: ' + payload"/>
+
+
+    <int:splitter input-channel="order" output-channel="orderItem" expression="payload.getItemList()"/>
+
+    <int:recipient-list-router input-channel="orderItem">
+        <int:recipient channel="drinks" selector-expression="payload.getType().equals('drink')"/>
+        <int:recipient channel="food" selector-expression="payload.getType().equals('food')"/>
+    </int:recipient-list-router>
+
+    <bean id="repo" class="io.pivotal.scdf.si.xmltojson.ItemRepository"/>
+    <bean id="itemPriceFixer" class="io.pivotal.scdf.si.xmltojson.ItemPriceFixer">
+        <constructor-arg ref="repo"/>
+    </bean>
+    <int:service-activator input-channel="drinks" output-channel="drink-to-json" ref="itemPriceFixer" method="process"/>
+    <int:service-activator input-channel="food" output-channel="food-to-json" ref="itemPriceFixer" method="process"/>
+
+    <int:object-to-json-transformer input-channel="drink-to-json" output-channel="drink-result" />
+    <int:object-to-json-transformer input-channel="food-to-json" output-channel="food-result" />
+
+    <int:logging-channel-adapter id="food-result" level="INFO" logger-name="FOOD"/>
+    <int:logging-channel-adapter id="drink-result" level="INFO" logger-name="DRINKS"/>
+
+
+</beans>

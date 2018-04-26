@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <orderItem>
+        <type>food</type>
+        <id>0321200683</id>
+        <quantity>2</quantity>
+    </orderItem>
+    <orderItem>
+        <type>drink</type>
+        <id>1590596439</id>
+        <quantity>1</quantity>
+    </orderItem>
+    <orderItem>
+        <type>drink</type>
+        <id>1590596440</id>
+        <quantity>1</quantity>
+    </orderItem>
+</order>
