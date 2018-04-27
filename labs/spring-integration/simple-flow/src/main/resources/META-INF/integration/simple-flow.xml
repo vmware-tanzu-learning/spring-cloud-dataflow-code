@@ -9,10 +9,11 @@
 
     <int:channel id="input" />
 
-
     <int:transformer input-channel="input" expression="payload.toUpperCase()" output-channel="output"/>
 
-    <int:logging-channel-adapter id="output" level="INFO"/>
+    <int:channel id="output" />
+
+    <int:logging-channel-adapter channel="output" level="INFO"/>
 
 
 </beans>

@@ -30,23 +30,3 @@ public class SimpleFlowApplication {
         };
     }
 }
-
-
-//@Configuration
-class SimpleFlow {
-
-    @Bean
-    public MessageChannel input(){
-        return new DirectChannel();
-    }
-
-    @Bean
-    public IntegrationFlow startFlow() {
-        return IntegrationFlows.from("input")
-                .transform(String.class, String::toUpperCase)
-                .handle(System.out::println)
-                .get();
-    }
-
-
-}
