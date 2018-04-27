@@ -21,7 +21,7 @@
     <file:file-to-bytes-transformer delete-files="true" input-channel="filesIn" output-channel="content" />
 
 
-    <bean id="orderDeserializer" class="io.pivotal.scdf.si.xmltojson.OrderDeserializer"/>
+    <bean id="orderDeserializer" class="io.pivotal.scdf.si.xmltojson.utils.OrderDeserializer"/>
     <int:payload-deserializing-transformer output-channel="order" input-channel="content" deserializer="orderDeserializer" />
 
 
@@ -41,8 +41,8 @@
         <int:recipient channel="food" selector-expression="payload.getType().equals('food')"/>
     </int:recipient-list-router>
 
-    <bean id="repo" class="io.pivotal.scdf.si.xmltojson.ItemRepository"/>
-    <bean id="itemPriceFixer" class="io.pivotal.scdf.si.xmltojson.ItemPriceFixer">
+    <bean id="repo" class="io.pivotal.scdf.si.xmltojson.repository.ItemRepository"/>
+    <bean id="itemPriceFixer" class="io.pivotal.scdf.si.xmltojson.service.ItemPriceFixer">
         <constructor-arg ref="repo"/>
     </bean>
     <int:service-activator input-channel="drinks" output-channel="drink-to-json" ref="itemPriceFixer" method="process"/>
