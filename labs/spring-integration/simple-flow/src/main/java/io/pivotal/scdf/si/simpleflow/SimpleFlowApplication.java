@@ -22,7 +22,7 @@ public class SimpleFlowApplication {
 	}
 
 	@Bean
-    public CommandLineRunner process(MessageChannel input){
+	public CommandLineRunner process(MessageChannel input){
 	    return args -> {
 
 	        input.send(MessageBuilder.withPayload("spring integration rocks!").build());
