@@ -26,20 +26,20 @@ import java.util.Date;
 @SpringBootApplication
 public class SourceSinkDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SourceSinkDemoApplication.class, args);
-	}
-
-    // Client
-	@Autowired
-    RabbitTemplate template;
-
-	@Bean
-    public Queue demo(){
-	    return new Queue("demo",false,false,true);
+    public static void main(String[] args) {
+        SpringApplication.run(SourceSinkDemoApplication.class, args);
     }
 
-	@Scheduled(fixedRate = 1000)
+    // Client
+    @Autowired
+    RabbitTemplate template;
+
+    @Bean
+    public Queue demo(){
+        return new Queue("demo",false,false,true);
+    }
+
+    @Scheduled(fixedRate = 1000)
     public void sender(){
         template.convertAndSend("demo",String.format("Hello at %s", DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date())));
     }
