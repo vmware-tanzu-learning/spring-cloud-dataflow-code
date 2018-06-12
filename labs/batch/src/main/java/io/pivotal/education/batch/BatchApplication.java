@@ -22,6 +22,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * <p>
  * TODO-04: Time for you to do the rest. Annotate this class to enable Spring
  * Boot's support for Spring Batch.
+ * <p>
+ * TODO-11: Run this as a Spring Boot application. It should process all 5 lines
+ * from the <tt>sample-data.csv</tt> file and pass the validation by the
+ * {@link #checkResults(JdbcTemplate)} method below.
  */
 @SpringBootApplication
 @EnableBatchProcessing

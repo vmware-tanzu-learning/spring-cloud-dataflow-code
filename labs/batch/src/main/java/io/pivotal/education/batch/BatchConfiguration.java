@@ -178,8 +178,8 @@ public class BatchConfiguration {
 	@Bean
 	public Step step1(ItemReader<Person> reader, ItemProcessor<Person, Person> processor, ItemWriter<Person> writer) {
 		// TODO-10: Use the stepBuilderFactory to
-		// a. Create a step with the name STEP_NAME using get() - the code looks similar
-		// to the Job setup in the previous method.
+		// a. Create a step with the name STEP_NAME using get() 
+		//    - code looks similar to getting the Job builder in the previous method.
 		// b. Set the reader, processor and writer.
 		// c. Build and return
 		return null; // This should not return null

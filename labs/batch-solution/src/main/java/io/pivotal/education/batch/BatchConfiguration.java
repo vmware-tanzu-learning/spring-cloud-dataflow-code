@@ -164,7 +164,7 @@ public class BatchConfiguration {
 	 */
 	@Bean
 	public Step step1(ItemReader<Person> reader, ItemProcessor<Person, Person> processor, ItemWriter<Person> writer) {
-		return stepBuilderFactory.get(STEP_NAME) // Get a factory for this step
+		return stepBuilderFactory.get(STEP_NAME) // Get a builder for this step
 				.<Person, Person>chunk(10) // Set chunk size to 10
 				.reader(reader) // Specify the item-reader
 				.processor(processor) // Specify the processor
