@@ -54,7 +54,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
 	/**
 	 * Throws an exception if the Person has names that are not completely upper
-	 * case.
+	 * case. Otherwise it logs them.
 	 * 
 	 * @param person
 	 *            A person object from the database.

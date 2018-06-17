@@ -25,12 +25,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * <p>
  * TO-DOs 5-10 are in {@link BatchConfiguration}.
  * <p>
- * TODO-11: Run this as a Spring Boot application. It should process all 5 lines
- * from the <tt>sample-data.csv</tt> file and pass the validation by the
- * {@link #checkResults(JdbcTemplate)} method below.
+ * TODO-12: Finally, run this as a Spring Boot application. It should process
+ * all 5 lines from the <tt>sample-data.csv</tt> file and pass the validation by
+ * the {@link #checkResults(JdbcTemplate)} method below. You should see the 5
+ * users listed on the console log output with their names in upper case.
+ * <p>
+ * Congratulations you have finished the lab.
  */
 @SpringBootApplication
-@EnableBatchProcessing
 @EntityScan("io.pivotal.education.domain")
 public class BatchApplication {
 

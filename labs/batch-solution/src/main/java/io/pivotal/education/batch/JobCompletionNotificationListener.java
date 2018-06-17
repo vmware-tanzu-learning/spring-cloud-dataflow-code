@@ -52,6 +52,13 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 		}
 	}
 
+	/**
+	 * Throws an exception if the Person has names that are not completely upper
+	 * case. Otherwise it logs them.
+	 * 
+	 * @param person
+	 *            A person object from the database.
+	 */
 	protected void validate(Person person) {
 
 		if (person.getFirstName().matches(UPPER_CASE_REGEX) && person.getLastName().matches(UPPER_CASE_REGEX))

@@ -27,7 +27,6 @@ import io.pivotal.education.domain.Person;
  * TODO-05: The entire configuration for the Batch Job will be in here. Annotate
  * this as a Spring Java configuration class.
  */
-@Configuration
 public class BatchConfiguration {
 
 	/**
