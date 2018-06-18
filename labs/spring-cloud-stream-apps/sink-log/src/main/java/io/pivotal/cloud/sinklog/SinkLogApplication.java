@@ -22,6 +22,9 @@ public class SinkLogApplication {
     this.props = props;
   }
 
+  /**
+   * Log every message received, adding the prefix and suffix to each message.
+   */
   @StreamListener(Sink.INPUT)
   public void sinkLog(String message){
     log.info(props.getPrefix() + message + props.getSuffix());
