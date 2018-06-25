@@ -30,7 +30,7 @@ public class SimpleTaskApplication {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... strings) throws Exception {
-				// This is our task = it just writes to the console
+				// This is our task - it just writes to the console
 				// A real task would actually do something!
 				System.out.println(" >>> Executing simple task");
 			}
