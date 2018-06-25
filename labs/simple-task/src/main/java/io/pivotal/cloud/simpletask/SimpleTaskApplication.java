@@ -3,6 +3,7 @@ package io.pivotal.cloud.simpletask;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 
@@ -31,7 +32,7 @@ public class SimpleTaskApplication {
 			public void run(String... strings) throws Exception {
 				// This is our task = it just writes to the console
 				// A real task would actually do something!
-				System.out.println("Executing simple task");
+				System.out.println(" >>> Executing simple task");
 			}
 		};
 	}
