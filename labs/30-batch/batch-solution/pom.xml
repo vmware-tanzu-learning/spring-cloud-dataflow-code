@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.pivotal.education</groupId>
-	<artifactId>batch</artifactId>
+	<artifactId>30-batch-solution</artifactId>
 	<version>2.1.0-RELEASE</version>
 	<packaging>jar</packaging>
 
-	<name>batch</name>
+	<name>batch-solution</name>
 	<description>Batch Application</description>
 
 	<parent>
@@ -24,13 +24,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<!--
-	  // TODO-02: Note the use of the Spring Boot starters for JPA and Spring 
-	  //          Batch. And also (scroll down) for testing Spring Batch.
-	  //
-	  //          It was created for you using Spring Initializr web-page.
-	  //          DO NOT modify this file.
-	  -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
