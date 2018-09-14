@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '2.0.3.RELEASE'
+    springBootVersion = '2.0.5.RELEASE'
   }
   repositories {
     mavenCentral()
@@ -41,9 +41,10 @@ dependencies {
   compile('org.springframework.cloud:spring-cloud-stream')
   compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit')
 
-  compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+  annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
   runtime('org.springframework.boot:spring-boot-devtools')
+
   testCompile('org.springframework.boot:spring-boot-starter-test')
   testCompile('org.springframework.cloud:spring-cloud-stream-test-support')
 }
