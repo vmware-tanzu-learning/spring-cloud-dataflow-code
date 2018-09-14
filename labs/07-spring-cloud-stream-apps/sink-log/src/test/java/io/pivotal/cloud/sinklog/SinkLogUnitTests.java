@@ -11,20 +11,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 public class SinkLogUnitTests {
 
-	@Rule
-	public OutputCapture capture = new OutputCapture();
+  @Rule
+  public OutputCapture capture = new OutputCapture();
 
-	@Test
-	public void simpleAppTest() {
-		SinkLogProperties properties = new SinkLogProperties();
-		properties.setPrefix("@");
-		properties.setSuffix("@");
+  @Test
+  public void simpleAppTest() {
+    SinkLogProperties properties = new SinkLogProperties();
+    properties.setPrefix("@");
+    properties.setSuffix("@");
 
-		SinkLogApplication app = new SinkLogApplication(properties);
+    SinkLogApplication app = new SinkLogApplication(properties);
 
-		app.sinkLog("Hello Sink Log!!");;
+    app.sinkLog("Hello Sink Log!!");
+    ;
 
-		assertThat(capture.toString()).contains("@Hello Sink Log!!@");
-	}
+    assertThat(capture.toString()).contains("@Hello Sink Log!!@");
+  }
 
 }

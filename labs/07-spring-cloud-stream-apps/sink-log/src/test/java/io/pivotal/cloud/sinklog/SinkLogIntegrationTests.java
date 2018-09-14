@@ -17,21 +17,21 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class SinkLogIntegrationTests {
 
-	@Rule
-	public OutputCapture capture = new OutputCapture();
+  @Rule
+  public OutputCapture capture = new OutputCapture();
 
-	@Autowired
-	private Sink sink;
+  @Autowired
+  private Sink sink;
 
-	@Test
-	public void sinkTest() {
-		assertNotNull(sink.input());
+  @Test
+  public void sinkTest() {
+    assertNotNull(sink.input());
 
-		GenericMessage<String> message = new GenericMessage<>("Using Sink input channel");
+    GenericMessage<String> message = new GenericMessage<>("Using Sink input channel");
 
-		this.sink.input().send(message);
+    this.sink.input().send(message);
 
-		assertThat(capture.toString()).contains("[Using Sink input channel]");
-	}
+    assertThat(capture.toString()).contains("[Using Sink input channel]");
+  }
 
 }
