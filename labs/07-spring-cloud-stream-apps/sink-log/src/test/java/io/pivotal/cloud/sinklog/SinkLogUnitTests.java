@@ -23,7 +23,6 @@ public class SinkLogUnitTests {
     SinkLogApplication app = new SinkLogApplication(properties);
 
     app.sinkLog("Hello Sink Log!!");
-    ;
 
     assertThat(capture.toString()).contains("@Hello Sink Log!!@");
   }
