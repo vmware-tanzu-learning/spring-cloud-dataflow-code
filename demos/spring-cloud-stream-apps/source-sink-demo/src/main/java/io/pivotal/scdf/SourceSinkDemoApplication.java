@@ -26,23 +26,24 @@ import java.util.Date;
 @SpringBootApplication
 public class SourceSinkDemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SourceSinkDemoApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(SourceSinkDemoApplication.class, args);
+  }
 
-    // Client
-    @Autowired
-    RabbitTemplate template;
+  @Autowired
+  RabbitTemplate template;
 
-    @Bean
-    public Queue demo(){
-        return new Queue("demo",false,false,true);
-    }
+  @Bean
+  public Queue demo() {
+    return new Queue("demo", false, false, true);
+  }
 
-    @Scheduled(fixedRate = 1000)
-    public void sender(){
-        template.convertAndSend("demo",String.format("Hello at %s", DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date())));
-    }
+  @Scheduled(fixedRate = 1000)
+  public void sender() {
+    String formattedDate = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(new Date());
+    String message = String.format("Hello at %s", formattedDate);
+    template.convertAndSend("demo", message);
+  }
 
 }
 
@@ -50,22 +51,22 @@ public class SourceSinkDemoApplication {
 @EnableBinding(Source.class)
 class DemoSource {
 
-    @Bean
-    public IntegrationFlow amqpInbound(ConnectionFactory connectionFactory) {
-        return IntegrationFlows.from(Amqp.inboundAdapter(connectionFactory, "demo"))
-                .channel(Source.OUTPUT)
-                .get();
-    }
+  @Bean
+  public IntegrationFlow amqpInbound(ConnectionFactory connectionFactory) {
+    return IntegrationFlows.from(Amqp.inboundAdapter(connectionFactory, "demo"))
+        .channel(Source.OUTPUT)
+        .get();
+  }
 }
 
 
 @EnableBinding(Sink.class)
 class DemoLog {
 
-    private static Logger log = LoggerFactory.getLogger(DemoLog.class);
+  private static Logger log = LoggerFactory.getLogger(DemoLog.class);
 
-    @StreamListener(Sink.INPUT)
-    public void handler(String message){
-        log.info(message);
-    }
+  @StreamListener(Sink.INPUT)
+  public void handler(String message) {
+    log.info(message);
+  }
 }
