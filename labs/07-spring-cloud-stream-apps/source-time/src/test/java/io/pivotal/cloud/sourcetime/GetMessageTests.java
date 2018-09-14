@@ -16,21 +16,21 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class GetMessageTests {
 
-	private final Logger log = LoggerFactory.getLogger(GetMessageTests.class);
+  private final Logger log = LoggerFactory.getLogger(GetMessageTests.class);
 
-	@Autowired
-	private MessageSource<String> sourceTime;
+  @Autowired
+  private MessageSource<String> sourceTime;
 
-	@Test
-	public void contextLoads() {
-		assertNotNull(sourceTime);
-	}
+  @Test
+  public void contextLoads() {
+    assertNotNull(sourceTime);
+  }
 
-	@Test
-	public void simpleSourceTimeTest() {
-		Message<String> message = sourceTime.receive();
-		assertNotNull(message);
-		log.info(message.getPayload());
-	}
+  @Test
+  public void simpleSourceTimeTest() {
+    Message<String> message = sourceTime.receive();
+    assertNotNull(message);
+    log.info(message.getPayload());
+  }
 
 }

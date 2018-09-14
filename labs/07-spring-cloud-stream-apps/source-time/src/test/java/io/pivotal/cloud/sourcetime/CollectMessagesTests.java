@@ -14,17 +14,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class CollectMessagesTests {
 
-	@Autowired
-	private Source timeSource;
+  @Autowired
+  private Source timeSource;
 
-	@Autowired
-	private MessageCollector messageCollector;
+  @Autowired
+  private MessageCollector messageCollector;
 
 
-	@Test
-	public void sourceTimeTest() throws InterruptedException {
-		Thread.sleep(5000);
-		assertThat(messageCollector.forChannel(timeSource.output()).size()).isGreaterThan(3);
-	}
+  @Test
+  public void sourceTimeTest() throws InterruptedException {
+    Thread.sleep(5000);
+    assertThat(messageCollector.forChannel(timeSource.output()).size()).isGreaterThan(3);
+  }
 
 }
