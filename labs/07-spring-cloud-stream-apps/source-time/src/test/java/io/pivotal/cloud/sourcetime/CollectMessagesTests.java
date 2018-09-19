@@ -24,7 +24,7 @@ public class CollectMessagesTests {
   @Test
   public void sourceTimeTest() throws InterruptedException {
     Thread.sleep(5000);
-    assertThat(messageCollector.forChannel(timeSource.output()).size()).isGreaterThan(3);
+    assertThat(messageCollector.forChannel(timeSource.output()).size()).isGreaterThan(4);
   }
 
 }
