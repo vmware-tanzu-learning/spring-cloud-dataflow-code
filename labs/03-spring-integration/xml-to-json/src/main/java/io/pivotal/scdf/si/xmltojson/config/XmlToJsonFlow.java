@@ -9,8 +9,8 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.dsl.Transformers;
-import org.springframework.integration.dsl.channel.DirectChannelSpec;
-import org.springframework.integration.dsl.channel.MessageChannels;
+import org.springframework.integration.dsl.DirectChannelSpec;
+import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.file.dsl.Files;
 import org.springframework.integration.handler.LoggingHandler;
 
