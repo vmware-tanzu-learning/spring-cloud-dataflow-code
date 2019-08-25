@@ -97,8 +97,9 @@ public class BatchConfiguration {
 		// b. Set name to PERSON_ITEM_READER (see top of class)
 		// c. The input resource is inputFile (see previous statement)
 		// d. Call delimited() as the CSV file is comma-delimited
-		// e. Set the fieldSetMapper to fieldMapper (see top of method)
-		// f. Invoke build() and return what it creates
+		// e. Specify the field names to be read (firstName and lastName)
+		// f. Set the fieldSetMapper to fieldMapper (see top of method)
+		// g. Invoke build() and return what it creates
 		return null; // This should not return null
 	}
 
