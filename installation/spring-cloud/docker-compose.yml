@@ -8,22 +8,28 @@ services:
       MYSQL_DATABASE: dataflow
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: rootpw
+    networks:
+      - dataflow-network
     expose:
       - '3306'
     ports:
       - '3306:3306'
 
   rabbitmq:
-   image: rabbitmq:3.7.17-management-alpine
-   container_name: dataflow-rabbitmq
-   expose:
-     - '5672'
-   ports:
-     - '15672:15672'
+    image: rabbitmq:3.7.17-management-alpine
+    container_name: dataflow-rabbitmq
+    networks:
+      - dataflow-network
+    expose:
+      - '5672'
+    ports:
+      - '15672:15672'
 
   dataflow-server:
     image: springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE
     container_name: dataflow-server
+    networks:
+      - dataflow-network
     ports:
       - "9393:9393"
     environment:
@@ -44,6 +50,8 @@ services:
   skipper-server:
     image: springcloud/spring-cloud-skipper-server:2.1.2.RELEASE
     container_name: skipper
+    networks:
+      - dataflow-network
     ports:
       - "7577:7577"
       - "9000-9010:9000-9010"
@@ -64,6 +72,8 @@ services:
     container_name: prometheus
     volumes:
       - 'scdf-targets:/etc/prometheus/'
+    networks:
+      - dataflow-network
     ports:
       - '9090:9090'
     depends_on:
@@ -76,6 +86,8 @@ services:
     container_name: service-discovery
     volumes:
       - 'scdf-targets:/tmp/scdf-targets/'
+    networks:
+      - dataflow-network
     expose:
       - '8181'
     ports:
@@ -93,8 +105,13 @@ services:
   grafana:
     image: springcloud/spring-cloud-dataflow-grafana-prometheus:2.2.1.RELEASE
     container_name: grafana
+    networks:
+      - dataflow-network
     ports:
       - '3000:3000'
+
+networks:
+  dataflow-network:
 
 volumes:
   scdf-targets:
