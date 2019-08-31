@@ -50,6 +50,8 @@ services:
   skipper-server:
     image: springcloud/spring-cloud-skipper-server:2.1.2.RELEASE
     container_name: skipper
+    volumes:
+      - "./deployment_logs:/tmp"
     networks:
       - dataflow-network
     ports:
