@@ -30,6 +30,7 @@ services:
     container_name: dataflow-server
     volumes:
       - "./dataflow/tmp:/tmp"
+      - "./dataflow/workspace:/workspace"
     networks:
       - dataflow-network
     ports:
