@@ -20,9 +20,8 @@ services:
     container_name: dataflow-rabbitmq
     networks:
       - dataflow-network
-    expose:
-      - '5672'
     ports:
+      - '5672:5672'
       - '15672:15672'
 
   dataflow-server:
