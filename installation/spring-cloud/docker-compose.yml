@@ -29,7 +29,7 @@ services:
     container_name: dataflow-server
     volumes:
       - "./dataflow/tmp:/tmp"
-      - "./dataflow/workspace:/workspace"
+      - "./workspace:/workspace"
     networks:
       - dataflow-network
     ports:
@@ -54,6 +54,7 @@ services:
     container_name: skipper
     volumes:
       - "./deployer/tmp:/tmp"
+      - "./workspace:/workspace"
     networks:
       - dataflow-network
     ports:
