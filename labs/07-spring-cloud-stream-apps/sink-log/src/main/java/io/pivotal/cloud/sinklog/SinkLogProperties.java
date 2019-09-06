@@ -9,14 +9,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "sink.log")
 public class SinkLogProperties {
 
-	/**
-	 * The prefix to use when logging messages
-	 */
 	private String prefix = ">>> ";
 
-	/**
-	 * The suffix to use when logging messages
-	 */
 	private String suffix = " <<<";
 
 	public String getPrefix() {
