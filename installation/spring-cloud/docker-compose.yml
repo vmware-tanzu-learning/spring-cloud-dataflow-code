@@ -28,7 +28,7 @@ services:
     image: springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE
     container_name: dataflow-server
     volumes:
-      - "./dataflow/tmp:/tmp"
+      - "./tmp:/tmp"
       - "./workspace:/workspace"
     networks:
       - dataflow-network
@@ -53,7 +53,7 @@ services:
     image: springcloud/spring-cloud-skipper-server:2.1.2.RELEASE
     container_name: skipper
     volumes:
-      - "./deployer/tmp:/tmp"
+      - "./tmp:/tmp"
       - "./workspace:/workspace"
     networks:
       - dataflow-network
