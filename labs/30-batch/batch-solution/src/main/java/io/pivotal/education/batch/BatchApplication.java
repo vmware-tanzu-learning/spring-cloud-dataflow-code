@@ -38,7 +38,7 @@ public class BatchApplication {
 		final Logger logger = LoggerFactory.getLogger(BatchApplication.class);
 
 		// Check the application worked
-		Long creationCount = jdbcTemplate.queryForObject("SELECT count(*) FROM People", Long.class);
+		Long creationCount = jdbcTemplate.queryForObject("SELECT count(*) FROM people", Long.class);
 
 		logger.info("Finished. Application loaded " + creationCount + " people");
 
