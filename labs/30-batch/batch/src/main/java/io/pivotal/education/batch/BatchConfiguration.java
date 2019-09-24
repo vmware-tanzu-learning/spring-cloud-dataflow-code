@@ -1,7 +1,6 @@
 package io.pivotal.education.batch;
 
-import javax.persistence.EntityManagerFactory;
-
+import io.pivotal.education.domain.Person;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -10,18 +9,15 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import io.pivotal.education.domain.Person;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * TODO-05: The entire configuration for the Batch Job will be in here. Annotate
@@ -151,8 +147,8 @@ public class BatchConfiguration {
 	 */
 	@Bean
 	public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
-		// TODO-09: We have setup the Job for you. Make sure understand what this code
-		// does.
+		// TODO-09: We have setup the Job for you. Make sure you understand what
+		// this code does.
 
 		return jobBuilderFactory.get(JOB_NAME) // Get a builder for this job
 				.incrementer(new RunIdIncrementer()) // Defines job ids: 1, 2, 3 ...
