@@ -71,7 +71,7 @@ services:
     entrypoint: "./wait-for-it.sh mysql:3306 -- java -Djava.security.egd=file:/dev/./urandom -jar /spring-cloud-skipper-server.jar"
 
   # Grafana is configured with the Prometheus datasource.
-  # Use `docker exec -it prometheus /bin/sh` to logging in the container
+  # Use `docker exec -it prometheus /bin/sh` to log into the container
   prometheus:
     image: springcloud/spring-cloud-dataflow-prometheus-local:2.2.1.RELEASE
     container_name: prometheus
@@ -85,7 +85,7 @@ services:
       - service-discovery
 
   # The service-discovery container. Required for Prometheus setup only
-  # Use `docker exec -it service-discovery /bin/sh` to logging the container
+  # Use `docker exec -it service-discovery /bin/sh` to log into the container
   service-discovery:
     image: springcloud/spring-cloud-dataflow-prometheus-service-discovery:0.0.4.RELEASE
     container_name: service-discovery
